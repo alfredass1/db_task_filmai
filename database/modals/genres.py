@@ -1,4 +1,5 @@
-from database.database import create_table_database
+from database.database import create_table_database, insert_query, get_database
+from entities.genre import genre
 
 
 def create_genres_table():
@@ -17,4 +18,36 @@ def create_movies_genres_table():
 
 
 create_genres_table()
-create_movies_genres_table()
+# create_movies_genres_table()
+# create_table_database('DROP TABLE genres')
+
+# get_database('PRAGMA table_info(genres)')
+
+def create_genre(genre):
+    query = "INSERT INTO genres VALUES (? ,?)"
+    params = (genre.genre_id, genre.name)
+    insert_query(query, params)
+
+
+def get_genre(genre):
+    query = "SELECT * FROM genres WHERE genre_id = (?) OR name = (?)"
+    params = (genre.genre_id, genre.name)
+    get_database(query, params)
+
+
+def update_genre(genre):
+    query = "UPDATE genres SET name = 'Comedy' WHERE name = (?)"
+    params = (genre.name,)
+    insert_query(query, params)
+
+def delete_genre(genre):
+    query = "DELETE FROM genres WHERE genre_id = (?) OR name = (?)"
+    params = (genre.genre_id, genre.name)
+    insert_query(query, params)
+
+genre2 = genre(None, "Fantastic")
+
+# create_genre(genre2)
+# get_genre(genre2)
+# update_genre(genre2)
+# delete_genre(genre2)

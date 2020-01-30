@@ -6,3 +6,4 @@ class movie:
         self.release_date = release_date
         self.rating = rating
         self.genre = genre
+

@@ -32,7 +32,7 @@ def create_actor(actor):
     insert_query(query, params)
 
 
-actor1 = actor(None, "Bet kas")
+actor2 = actor(None, "kazkas")
 
 
 def get_actor(actor):
@@ -47,6 +47,13 @@ def update_actor(actor):
     insert_query(query, params)
 
 
-get_actor(actor1)
-update_actor(actor1)
-create_actor(actor1)
+def delete_actor(actor):
+    query = "DELETE FROM actors WHERE actor_id = (?) OR actor_name = (?)"
+    params = (actor.actor_id, actor.actor_name)
+    insert_query(query, params)
+
+# delete_actor(actor1)
+# get_actor(actor2)
+
+# update_actor(actor2)
+# create_actor(actor2)

@@ -16,20 +16,18 @@ def create_movies_table():
 create_movies_table()
 
 
-# query_database('PRAGMA table_info(movies)')
+# get_database('PRAGMA table_info(movies)')
 
 # create_table_database('DROP TABLE movies')
 
 
 def create_movie(movie):
     query = "INSERT INTO movies VALUES (? ,?, ?, ?, ?)"
-    params = (movie.movie_id, movie.movie_name, movie.release_date, movie.rating, movie.genre,)
+    params = (movie.movie_id, movie.movie_name, movie.release_date, movie.rating, movie.genre)
     insert_query(query, params)
 
 
-movie1 = movie(None, "Toy Story", 1995, 8, "animation")
-
-
+movie2 = movie(None, "Toy Story2", 1995, 8, "animation")
 
 
 def get_movie(movie):
@@ -40,13 +38,10 @@ def get_movie(movie):
     get_database(query, params)
 
 
-
 def update_movie(movie):
     query = "UPDATE movies SET movie_name = 'Bet kas' WHERE movie_name = (?)"
     params = (movie.movie_name,)
     insert_query(query, params)
-
-
 
 
 def delete_movie(movie):
@@ -55,7 +50,9 @@ def delete_movie(movie):
     params = (movie.movie_id, movie.movie_name, movie.release_date, movie.rating, movie.genre)
     insert_query(query, params)
 
-# delete_movie(movie1)
-# update_movie(movie1)
-# get_movie(movie1)
-# create_movie(movie1)
+
+# delete_movie(movie2)
+# update_movie(movie2)
+
+# get_movie(movie2)
+# create_movie(movie2)

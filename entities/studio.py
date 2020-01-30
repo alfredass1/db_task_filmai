@@ -1,5 +1,5 @@
 class studio:
 
-    def __init__(self, studio_Id, name):
-        self.studio_Id = studio_Id
-        self.name = name
+    def __init__(self, studio_id, studio_name):
+        self.studio_id = studio_id
+        self.studio_name = studio_name
