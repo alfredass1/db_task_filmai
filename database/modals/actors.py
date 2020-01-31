@@ -52,8 +52,25 @@ def delete_actor(actor):
     params = (actor.actor_id, actor.actor_name)
     insert_query(query, params)
 
+
 # delete_actor(actor1)
 # get_actor(actor2)
 
 # update_actor(actor2)
 # create_actor(actor2)
+
+
+def create_actor_movie(actor_name, movie_name):
+    query = """INSERT INTO actors_movies (actor_id, movie_id)
+                        SELECT(SELECT actor_id FROM actors WHERE actor_name= ?),
+                        (SELECT movie_id FROM movies WHERE movie_name= ?)"""
+    params = (actor_name, movie_name)
+    insert_query(query, params)
+
+
+def get_actor_movie():
+    query = "SELECT * FROM actor_movie"
+    get_database(query)
+
+
+

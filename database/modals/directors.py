@@ -50,7 +50,6 @@ def delete_director(director):
     insert_query(query, params)
 
 
-
 # create_director(director1)
 
 # get_director(director1)
@@ -59,3 +58,16 @@ def delete_director(director):
 
 # delete_director(director1)
 director1 = director(None, "Bet kaS")
+
+
+def create_director_movie(name, movie_name):
+    query = """INSERT INTO directors_movies (director_id, movie_id)
+                                        SELECT(SELECT director_id FROM directors WHERE name=?), 
+                                        (SELECT movie_id FROM movies WHERE movie_name=?)"""
+    params = (name, movie_name)
+    insert_query(query, params)
+
+
+def get_director_movie_table():
+    query = "SELECT * FROM directors_movies"
+    get_database(query)

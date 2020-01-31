@@ -18,6 +18,8 @@ def create_movies_genres_table():
 
 
 create_genres_table()
+
+
 # create_movies_genres_table()
 # create_table_database('DROP TABLE genres')
 
@@ -40,14 +42,31 @@ def update_genre(genre):
     params = (genre.name,)
     insert_query(query, params)
 
+
 def delete_genre(genre):
     query = "DELETE FROM genres WHERE genre_id = (?) OR name = (?)"
     params = (genre.genre_id, genre.name)
     insert_query(query, params)
 
+
 genre2 = genre(None, "Fantastic")
+
 
 # create_genre(genre2)
 # get_genre(genre2)
 # update_genre(genre2)
 # delete_genre(genre2)
+
+
+def create_movie_genre(name, movie_name):
+    query = """INSERT INTO movies_genre (genre_id, movie_id)
+                                SELECT(SELECT genre_id FROM genres WHERE name=?),
+                                (SELECT movie_id FROM movies WHERE movie_nmae=?)"""
+    params = (name, movie_name)
+    insert_query(query, params)
+
+
+def get_movie_genre():
+    query = "SELECT * FROM movies_genre"
+    get_database(query)
+
